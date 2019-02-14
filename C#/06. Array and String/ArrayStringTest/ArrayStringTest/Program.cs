@@ -11,13 +11,20 @@ namespace ArrayStringTest
         static void Main(string[] args)
         {
             string[] daysOfWeek = new string[7] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-            int[,] matrix = new int[,] { {0, 0, 1 }, {1, 0, 1 }, {1, 1, 1 } };
+            int[] numbers = new int[6] { 0, 2, 3, 5, 8, 12 };
+            int[,] matrix = new int[,]
+            { 
+                {0, 0, 1 }, 
+                {1, 0, 1 }, 
+                {1, 1, 1 }
+            };
             int[][] jaggedArray = new int[3][];
 
             jaggedArray[0] = new int[] { 5, 8, 5, 9, 22 };
             jaggedArray[1] = new int[] { 0, 7, 14, 13 };
             jaggedArray[2] = new int[] { 11, 22 };
 
+            Console.WriteLine("Even numbers count from array: {0}", CountEvenNumbers(numbers));
             Console.WriteLine("Initial Jagged array:");
             PrintJaggedArray(jaggedArray);
             Console.WriteLine("Sorted Jagged array:");
@@ -34,8 +41,9 @@ namespace ArrayStringTest
             string firstDay = allDaysOfWeek.Split('|')[0];
             Console.WriteLine("All days of week: {0}", allDaysOfWeek.ToUpper());
             Console.WriteLine("First day of week: {0}", firstDay);
+            String.Format("First day of week: {0}", firstDay);
             Console.WriteLine();
-            StringBuilder builder = new StringBuilder("Count: ");
+            StringBuilder builder = new StringBuilder("Counter: ");
             for(int i = 0; i < 100; i++)
             {
                 builder.Append(i.ToString());
@@ -43,6 +51,12 @@ namespace ArrayStringTest
             }
             builder.Replace("99", "100");
             Console.WriteLine(builder);
+            Console.WriteLine();
+
+            string path1 = "C:\\Users\\cristian.popovici\\Internship";
+            string path2 = @"C:\Users\cristian.popovici\Internship";
+            Console.WriteLine("First path with \\ : {0}", path1);
+            Console.WriteLine("Second path with @ : {0}", path2);
             Console.ReadLine();
         }
 
@@ -53,6 +67,13 @@ namespace ArrayStringTest
                 Array.Sort(arr[i]);
             }
             return arr;
+        }
+
+        static int CountEvenNumbers(int[] arr)
+        {
+            int evenNumbersCount = 0;
+            evenNumbersCount =  arr.Where(x => x % 2 == 0).Count();
+            return evenNumbersCount;
         }
 
         static void PrintArrayElements(string[] arr)
@@ -86,8 +107,8 @@ namespace ArrayStringTest
 
         static void PrintArrayElements(int[,] arr, int size)
         {
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
                 {
                     Console.WriteLine("Element {0}-{1}, Value: {2}", i + 1, j + 1, arr[i, j]);
                 }

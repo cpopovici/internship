@@ -12,6 +12,13 @@ namespace TestApp
         public float x;
         public float y;
         public float z;
+
+        public static Vector3D Lerp(Vector3D v1, Vector3D v2)
+        {
+            Vector3D result = new Vector3D();
+            // some funny math
+            return result;
+        }
     }
 
     struct Vector2D
@@ -35,6 +42,10 @@ namespace TestApp
             position2D.x = 50;
             position2D.y = 85;
 
+            Vector3D vector2 = new Vector3D();
+            Vector3D.Lerp(position3D, vector2);
+
+            Console.WriteLine();
             Console.WriteLine(position2D.x + ":" + position2D.y);
             TestValueType(position2D);
             Console.WriteLine(position2D.x + ":" + position2D.y);
