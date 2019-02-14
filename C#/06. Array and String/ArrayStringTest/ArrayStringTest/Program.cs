@@ -12,11 +12,24 @@ namespace ArrayStringTest
         {
             string[] daysOfWeek = new string[7] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
             int[,] matrix = new int[,] { {0, 0, 1 }, {1, 0, 1 }, {1, 1, 1 } };
-            
+            int[][] jaggedArray = new int[3][];
+
+            jaggedArray[0] = new int[] { 5, 8, 5, 9, 22 };
+            jaggedArray[1] = new int[] { 0, 7, 14, 13 };
+            jaggedArray[2] = new int[] { 11, 22 };
+
+            Console.WriteLine("Initial Jagged array:");
+            PrintJaggedArray(jaggedArray);
+            Console.WriteLine("Sorted Jagged array:");
+            int[][] sortedArray = SortJaggedArray(jaggedArray);
+            PrintJaggedArray(sortedArray);
+            Console.WriteLine();
+
             PrintArrayElements(daysOfWeek);
             Console.WriteLine();
             PrintArrayElements(matrix, 3);
             Console.WriteLine();
+
             string allDaysOfWeek = string.Join(" | ", daysOfWeek);
             string firstDay = allDaysOfWeek.Split('|')[0];
             Console.WriteLine("All days of week: {0}", allDaysOfWeek.ToUpper());
@@ -33,11 +46,33 @@ namespace ArrayStringTest
             Console.ReadLine();
         }
 
+        static int[][] SortJaggedArray(int[][] arr)
+        {
+            for(int i = 0; i < arr.Length; i++)
+            {
+                Array.Sort(arr[i]);
+            }
+            return arr;
+        }
+
         static void PrintArrayElements(string[] arr)
         {
             for(int i = 0; i < arr.Length; i++)
             {
                 Console.WriteLine("Element {0}, Value: {1}", i + 1, arr[i]);
+            }
+        }
+
+        static void PrintJaggedArray(int[][] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write("Element({0}): ", i);
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    Console.Write("{0}{1}", arr[i][j], j == (arr[i].Length - 1) ? "" : " ");
+                }
+               Console.WriteLine();
             }
         }
 
