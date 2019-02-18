@@ -20,19 +20,5 @@ namespace Classes
             Console.WriteLine("Using " + Name + " " + Model + " Camera!");
             Console.WriteLine("Take Photo!");
         }
-        //public void Dial()
-        //{
-        //    Console.WriteLine(GetNameAndModel() + " Dial a number");
-        //}
-
-        //public void ReceiveMessage()
-        //{
-        //    Console.WriteLine(GetNameAndModel() + " Receive message");
-        //}
-
-        //public void SendMessage()
-        //{
-        //    Console.WriteLine(GetNameAndModel() + " Send message");
-        //}
     }
 }
