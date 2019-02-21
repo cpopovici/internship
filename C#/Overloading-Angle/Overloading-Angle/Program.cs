@@ -13,15 +13,18 @@ namespace Overloading_Angle
             var angle = new Angle(20, 10, 50);
             var angle2 = new Angle(320, 40, 36);
             var angle3 = new Angle(87, 12, 40);
+            var angle4 = new Angle(87, 12, 40);
             Angle[] angles = new Angle[3] { angle, angle2, angle3};
 
-            Console.WriteLine("Angle [{0}] to decimal value: {1}", angle, angle.ToDecimal());
+            Console.WriteLine($"Angle {angle} to decimal value: {angle.ToDecimal()}");
+            Console.WriteLine($"From decimal {20.1805555555556} to Angle == {Angle.FromDecimalToAngle(20.1805555555556)}");
+
             // standard sort
             Console.WriteLine("Standard sort:");
             Array.Sort(angles);
             foreach (var item in angles)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("\t{0}", item);
             }
             Console.WriteLine();
 
@@ -30,7 +33,7 @@ namespace Overloading_Angle
             Array.Sort(angles, Angle.Comparer.CompareByMinutes());
             foreach (var item in angles)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("\t{0}", item);
             }
             Console.WriteLine();
 
@@ -39,13 +42,15 @@ namespace Overloading_Angle
             Array.Sort(angles, Angle.Comparer.CompareBySeconds());
             foreach (var item in angles)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("\t{0}", item);
             }
             Console.WriteLine();
 
             // operators overloading
             Console.WriteLine("[{0}] + [{1}] = [{2}]",angle, angle2, angle + angle2);
+            Console.WriteLine("[{0}] - [{1}] = [{2}]", angle, angle2, angle - angle2);
             Console.WriteLine("[{0}] == [{1}] is {2}",angle, angle2, angle == angle2);
+            Console.WriteLine("[{0}] == [{1}] is {2}", angle3, angle4, angle3 == angle4);
             Console.WriteLine("[{0}] != [{1}] is {2}",angle, angle2, angle != angle3);
             Console.WriteLine();
 
@@ -66,7 +71,7 @@ namespace Overloading_Angle
                 Console.WriteLine();
                 foreach (var x in angle)
                 {
-                    Console.WriteLine("[2] Second foreach: {0}", x);
+                    Console.WriteLine("\t[2] Second foreach: {0}", x);
                 }
                 Console.WriteLine();
             }

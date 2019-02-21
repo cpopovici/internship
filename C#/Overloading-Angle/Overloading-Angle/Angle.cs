@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace Overloading_Angle
 {
-    internal class dfsfdsfs
-    {
-
-    }
-
     public class Angle : IEnumerable, IComparable
     {
         private int minutes;
@@ -54,27 +49,45 @@ namespace Overloading_Angle
             return (double)Degrees + minutes + seconds;
         }
 
-        public static Angle operator+ (Angle a1, Angle a2)
+        public static Angle FromDecimalToAngle(double decimalAngle)
         {
-            int degrees = a1.Degrees + a2.Degrees;
-            int minutes = a1.Minutes + a2.Minutes;
-            int seconds = a1.Seconds + a2.Seconds;
-            if (minutes > 60)
-            {
-                minutes -= 60;
-                degrees++;
-            }
-
-            if (seconds > 60)
-            {
-                seconds -= 60;
-                minutes++;
-            }
-            var sumOfAngles = new Angle(degrees, minutes, seconds);
-            return sumOfAngles;
+            int degrees = (int)decimalAngle;
+            int minutes = (int)((decimalAngle - degrees) * 60);
+            int seconds = (int)((decimalAngle - degrees - ((double)minutes / 60) + 0.000000001 ) * 3600);
+            return new Angle(degrees, minutes, seconds);
         }
 
-        public static bool operator==(Angle a1, Angle a2)
+        //public static Angle operator +(Angle a1, Angle a2)
+        //{
+        //    int degrees = a1.Degrees + a2.Degrees;
+        //    int minutes = a1.Minutes + a2.Minutes;
+        //    int seconds = a1.Seconds + a2.Seconds;
+        //    if (minutes > 60)
+        //    {
+        //        minutes -= 60;
+        //        degrees++;
+        //    }
+
+        //    if (seconds > 60)
+        //    {
+        //        seconds -= 60;
+        //        minutes++;
+        //    }
+        //    var sumOfAngles = new Angle(degrees, minutes, seconds);
+        //    return sumOfAngles;
+        //}
+
+        public static Angle operator +(Angle a1, Angle a2)
+        {
+            return FromDecimalToAngle(a1.ToDecimal() + a2.ToDecimal());
+        }
+
+        public static Angle operator -(Angle a1, Angle a2)
+        { 
+            return FromDecimalToAngle(a1.ToDecimal() - a2.ToDecimal());
+        }
+
+        public static bool operator ==(Angle a1, Angle a2)
         {
             return a1.Degrees == a2.Degrees &&
                    a1.Minutes == a2.Minutes &&
@@ -167,6 +180,9 @@ namespace Overloading_Angle
         {
             for (int i = 0; i < 3; i++)
                 yield return this[i];
+            //yield return this[0];
+            //yield return this[1];
+            //yield return this[2];
             //return new AngleEnumerator(this);
         }
 
