@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 
 namespace Overloading_Angle
 {
-    public class Angle : IEnumerable, IEnumerator, IComparable
+    internal class dfsfdsfs
     {
-        private int currentIndex = -1;
+
+    }
+
+    public class Angle : IEnumerable, IComparable
+    {
         private int minutes;
         private int seconds; 
         public int Degrees { get; private set; }
@@ -32,11 +36,6 @@ namespace Overloading_Angle
                     throw new ArgumentOutOfRangeException("Seconds value is greater than 60");
                 seconds = value;
             }
-        }
-
-        public object Current
-        {
-            get { return this[currentIndex]; }
         }
 
         public Angle(){}
@@ -166,25 +165,9 @@ namespace Overloading_Angle
 
         public IEnumerator GetEnumerator()
         {
-            yield return this[0];
-            yield return this[1];
-            yield return this[2];
-        }
-
-        public bool MoveNext()
-        {
-            if (currentIndex == 2)
-            {
-                Reset();
-                return false;
-            }
-            currentIndex++;
-            return true;
-        }
-
-        public void Reset()
-        {
-            currentIndex = -1;
+            for (int i = 0; i < 3; i++)
+                yield return this[i];
+            //return new AngleEnumerator(this);
         }
 
         public override bool Equals(object obj)
@@ -214,22 +197,83 @@ namespace Overloading_Angle
                 return -1;
             return 0;  
         }
-    }
 
-    class AngleMinutesComparer : IComparer
-    {
-        public int Compare(object x, object y)
+        public static class Comparer
         {
-            Angle a1 = (Angle)x;
-            Angle a2 = (Angle)y;
+            public static IComparer CompareByMinutes()
+            {
+                return new AngleMinutesComparer();
+            }
 
-            if (a1.Minutes > a2.Minutes)
+            public static IComparer CompareBySeconds()
+            {
+                return new AngleSecondsComparer();
+            }
+        }
+
+        class AngleMinutesComparer : IComparer
+        {
+            public int Compare(object x, object y)
+            {
+                Angle a1 = (Angle)x;
+                Angle a2 = (Angle)y;
+
+                if (a1.Minutes > a2.Minutes)
+                    return 1;
+                if (a1.Minutes < a2.Minutes)
+                    return -1;
+                if (a1.Minutes == a2.Minutes)
+                    return 0;
                 return 1;
-            if (a1.Minutes < a2.Minutes)
-                return -1;
-            if (a1.Minutes == a2.Minutes)
-                return 0;
-            return 1;
+            }
+        }
+
+        class AngleSecondsComparer : IComparer
+        {
+            public int Compare(object x, object y)
+            {
+                Angle a1 = (Angle)x;
+                Angle a2 = (Angle)y;
+
+                if (a1.Seconds > a2.Seconds)
+                    return 1;
+                if (a1.Seconds < a2.Seconds)
+                    return -1;
+                if (a1.Seconds == a2.Seconds)
+                    return 0;
+                return 1;
+            }
+        }
+
+        class AngleEnumerator : IEnumerator
+        {
+            private int currentIndex = -1;
+            private Angle _angle;
+            public AngleEnumerator(Angle angle)
+            {
+                this._angle = angle;
+            }
+
+            public object Current
+            {
+                get { return _angle[currentIndex]; }
+            }
+
+            public bool MoveNext()
+            {
+                if (currentIndex == 2)
+                {
+                    Reset();
+                    return false;
+                }
+                currentIndex++;
+                return true;
+            }
+
+            public void Reset()
+            {
+                currentIndex = -1;
+            }
         }
     }
 }

@@ -12,43 +12,64 @@ namespace Overloading_Angle
         {
             var angle = new Angle(20, 10, 50);
             var angle2 = new Angle(320, 40, 36);
-            var angle3 = new Angle(320, 12, 36);
-            
-            
-            Console.WriteLine(angle.ToDecimal());
+            var angle3 = new Angle(87, 12, 40);
             Angle[] angles = new Angle[3] { angle, angle2, angle3};
 
+            Console.WriteLine("Angle [{0}] to decimal value: {1}", angle, angle.ToDecimal());
+            // standard sort
+            Console.WriteLine("Standard sort:");
             Array.Sort(angles);
-            Console.WriteLine();
             foreach (var item in angles)
             {
                 Console.WriteLine(item);
             }
             Console.WriteLine();
-            Array.Sort(angles, new AngleMinutesComparer());
-            Console.WriteLine();
+
+            // sort by minutes
+            Console.WriteLine("Sort angles by minutes:");
+            Array.Sort(angles, Angle.Comparer.CompareByMinutes());
             foreach (var item in angles)
             {
                 Console.WriteLine(item);
             }
             Console.WriteLine();
-            Console.WriteLine(angle + angle2);
-            Console.WriteLine(angle == angle2);
-            Console.WriteLine(angle != angle3);
+
+            // sort by seconds
+            Console.WriteLine("Sort angles by seconds:");
+            Array.Sort(angles, Angle.Comparer.CompareBySeconds());
+            foreach (var item in angles)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();
+
+            // operators overloading
+            Console.WriteLine("[{0}] + [{1}] = [{2}]",angle, angle2, angle + angle2);
+            Console.WriteLine("[{0}] == [{1}] is {2}",angle, angle2, angle == angle2);
+            Console.WriteLine("[{0}] != [{1}] is {2}",angle, angle2, angle != angle3);
+            Console.WriteLine();
+
+            // index
+            Console.WriteLine("Change angle degrees to 360 by string index and minutes to 59 by int index:");
             angle["degrees"] = 360;
-            Console.WriteLine(angle["degrees"]);
+            angle[1] = 59;
+            Console.WriteLine("Angle degress = {0}, minutes = {1}", angle["degrees"], angle[1]);
+            Console.WriteLine();
 
-            Console.WriteLine("CompareTo: " + angle.CompareTo(angle2));
-            Console.WriteLine("FOREACH");
-            foreach(int i in angle)
+            Console.WriteLine("Compare [{0}] to [{1}] is {2}",angle, angle2, angle.CompareTo(angle2));
+            Console.WriteLine();
+           
+            Console.WriteLine("FOREACH TEST:");
+            foreach(var i in angle)
             {
-                Console.WriteLine("First foreach: {0}", i);
-                foreach (int x in angle)
+                Console.WriteLine("[1] First foreach: {0}", i);
+                Console.WriteLine();
+                foreach (var x in angle)
                 {
-                    Console.WriteLine("Second foreach: {0}", x);
+                    Console.WriteLine("[2] Second foreach: {0}", x);
                 }
+                Console.WriteLine();
             }
-
             Console.ReadKey();
         }
     }

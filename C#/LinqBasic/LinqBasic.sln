@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCollection", "GenericCollection\GenericCollection.csproj", "{D42C85F7-4344-4560-9751-D578867D7078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqBasic", "LinqBasic\LinqBasic.csproj", "{707B42F5-B239-476C-976C-2DC5A24F7016}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Overloading-Angle", "..\Overloading-Angle\Overloading-Angle\Overloading-Angle.csproj", "{A5C74458-11D5-4A5E-B637-55718F66DF9D}"
 EndProject
@@ -13,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D42C85F7-4344-4560-9751-D578867D7078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D42C85F7-4344-4560-9751-D578867D7078}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D42C85F7-4344-4560-9751-D578867D7078}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D42C85F7-4344-4560-9751-D578867D7078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{707B42F5-B239-476C-976C-2DC5A24F7016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707B42F5-B239-476C-976C-2DC5A24F7016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707B42F5-B239-476C-976C-2DC5A24F7016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707B42F5-B239-476C-976C-2DC5A24F7016}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5C74458-11D5-4A5E-B637-55718F66DF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5C74458-11D5-4A5E-B637-55718F66DF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5C74458-11D5-4A5E-B637-55718F66DF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0B3FBD7F-1FE6-4EFA-9503-D6E2D0633A9A}
+		SolutionGuid = {22156B2D-01CB-40E1-8C02-E99246F992DD}
 	EndGlobalSection
 EndGlobal
