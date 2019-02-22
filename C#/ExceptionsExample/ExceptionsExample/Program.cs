@@ -24,6 +24,7 @@ namespace ExceptionsExample
             {
                 Console.WriteLine("Exception: " + e.Message);
                 Debug.WriteLine("Divide by zero Exception: first argument: {0}, second argument: {1}", x, y);
+                
             }
 
             var angle = new Angle(240, 10, 50);
@@ -45,7 +46,7 @@ namespace ExceptionsExample
 
 
             // Custom Exceptions
-            var student = new Student("Ivan", "Ivanovici", 17);
+            var student = new Student("Ivan_", "Ivanovici", 18);
             try
             {
                 Student.ValidateStudent(student);

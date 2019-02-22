@@ -57,26 +57,6 @@ namespace Overloading_Angle
             return new Angle(degrees, minutes, seconds);
         }
 
-        //public static Angle operator +(Angle a1, Angle a2)
-        //{
-        //    int degrees = a1.Degrees + a2.Degrees;
-        //    int minutes = a1.Minutes + a2.Minutes;
-        //    int seconds = a1.Seconds + a2.Seconds;
-        //    if (minutes > 60)
-        //    {
-        //        minutes -= 60;
-        //        degrees++;
-        //    }
-
-        //    if (seconds > 60)
-        //    {
-        //        seconds -= 60;
-        //        minutes++;
-        //    }
-        //    var sumOfAngles = new Angle(degrees, minutes, seconds);
-        //    return sumOfAngles;
-        //}
-
         public static Angle operator +(Angle a1, Angle a2)
         {
             return FromDecimalToAngle(a1.ToDecimal() + a2.ToDecimal());

@@ -13,6 +13,7 @@ namespace Classes
         {
             Console.WriteLine("Mobile " + Name + " " + Model + " Created!");
         }
+
         public override void UseCamera()
         {
             base.UseCamera();

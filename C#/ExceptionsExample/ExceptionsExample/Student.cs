@@ -36,9 +36,16 @@ namespace ExceptionsExample
         public static void ValidateStudent(Student student)
         {
             if (!Regex.IsMatch(student.Name, @"^[a-zA-Z]+$"))
-                throw new InvalidStudentNameException("Invalid student name, Name can only contains letters!");
+            {
+                string exMessage = string.Format("{0} is invalid student name. Name can only contains letters!", student.Name);
+                throw new InvalidStudentNameException(exMessage);
+
+            }
             if (student.Age < 18)
-                throw new InvalidStudentAgeException("Student age is less than 18 years!");
+            {
+                string exMessage = string.Format("{0} is invalid student age. Set age more than 18 years!", student.Age);
+                throw new InvalidStudentAgeException(exMessage);
+            }      
         }
     }
 

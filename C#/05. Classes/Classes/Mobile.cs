@@ -8,29 +8,31 @@ namespace Classes
 {
     class Mobile : IMobile
     {
-        Random random;
+        private int _batteryLevel;
+
+
         public string Name { get; private set; }
         public string Model { get; private set; }
         public int IMEICode { get; private set; }
         public string Processor { get; private set; }
         public int RAM { get; private set; }
-        private int batteryLevel;
+        
         public int BatteryLevel
         {
-            get { return batteryLevel; }
+            get { return _batteryLevel; }
             set
             {
-                batteryLevel = value;
+                _batteryLevel = value;
                 if (value > 100)
-                    batteryLevel = 100;
+                    _batteryLevel = 100;
                 if (value < 0)
-                    batteryLevel = 0;
+                    _batteryLevel = 0;
             }
         }
         
         public Mobile(string name, string model, string processor, int ram)
         {
-            random = new Random();
+            Random random = new Random();
             this.Name = name;
             this.Model = model;
             this.Processor = processor;
@@ -51,6 +53,7 @@ namespace Classes
             Console.WriteLine("Battery level: " + BatteryLevel + "%");
             Console.WriteLine("IMEI Code: " + IMEICode);
         }
+
         public virtual void UseCamera()
         {
             Console.WriteLine("Starting Camera App!");
