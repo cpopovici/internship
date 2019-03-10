@@ -18,7 +18,7 @@ namespace FileSync
 
         static void Main(string[] args)
         {
-            SyncAllFiles();
+            SyncAll();
             StartFileMonitor(dir1Path);
             Console.ReadLine();
         }
@@ -99,10 +99,10 @@ namespace FileSync
             {
                 Thread.Sleep(500);
             }
-            SyncAllFiles();
+            SyncAll();
         }
 
-        private static void SyncAllFiles()
+        private static void SyncAll()
         {
             List<FileInfo> filesDir1 = FileUtils.GetFiles(dir1Path);
             List<FileInfo> filesDir2 = FileUtils.GetFiles(dir2Path);
